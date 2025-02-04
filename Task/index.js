@@ -1,35 +1,61 @@
 let notes = [
   {
     id: 1,
-    heading: "Mempelajari Javascript",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus non expedita similique tempora tempore exercitationem. Accusamus sint porro iste quos velit aperiam voluptas placeat error nulla maxime id, deserunt eum.",
-    created_by: "John Doe",
-    created_at: 1738146027613 // bisa menggunakan Date.now()
-  }
-]
+    heading: 'Mempelajari Javascript',
+    description:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus non expedita similique tempora tempore exercitationem. Accusamus sint porro iste quos velit aperiam voluptas placeat error nulla maxime id, deserunt eum.',
+    created_by: 'John Doe',
+    created_at: 1738146027613, // bisa menggunakan Date.now()
+  },
+];
 
-const createNote = () => {
-  // kode kalian
-}
+const createNote = (heading, description, created_by) => {
+  notes.push({
+    id: notes.length + 1,
+    heading,
+    description,
+    created_by,
+    created_at: Date.now(),
+  });
+};
 
 const readNote = () => {
-  // kode kalian
-}
+  console.log(notes);
+};
 
-const updateNote = () => {
-  // kode kalian
-}
+const updateNote = (id, heading, description) => {
+  const updated = notes.map((item) => {
+    if (item.id === id) {
+      return { ...item, heading, description };
+    } else {
+      return item;
+    }
+  });
+  notes = updated;
+};
 
-const deleteNote = () => {
-  // kode kalian
-}
+const deleteNote = (id) => {
+  notes = notes.filter((item) => item.id !== id);
+};
 
-// mengetes kode (diharapkan untuk tidak diganti): 
-createNote("Belajar React", "Mempelajari dasar-dasar React dan cara membuat komponen.", "Jane Doe")
+// mengetes kode (diharapkan untuk tidak diganti):
+createNote(
+  'Belajar React',
+  'Mempelajari dasar-dasar React dan cara membuat komponen.',
+  'Jane Doe'
+);
 readNote();
-console.log("=================================================================================================================")
-updateNote(1, "Mempelajari JavaScript Lanjutan", "Mempelajari konsep lanjutan dalam JavaScript.");
+console.log(
+  '================================================================================================================='
+);
+updateNote(
+  1,
+  'Mempelajari JavaScript Lanjutan',
+  'Mempelajari konsep lanjutan dalam JavaScript.'
+);
 readNote();
-console.log("=================================================================================================================")
-deleteNote(1)
-readNote()
+console.log(
+  '================================================================================================================='
+);
+deleteNote(1);
+readNote();
